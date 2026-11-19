@@ -24,17 +24,17 @@ def price(spots, spot_price, postage, printing, fulfillment, processing,
           sales_hours, design_hours, design_rate, coord_hours, renewal_hours):
     """Return the campaign ledger for one card.
 
-    >>> r = price(16, 150, 550, 312, 75, 70, 45, 10, 30, 5, 12)
+    >>> r = price(16, 150, 550, 312, 75, 70, 45, 10, 30, 4, 12)
     >>> r["collected"], r["hard_costs"], r["net_margin"]
     (2400.0, 1007.0, 1093.0)
-    >>> r["first_rate"], r["renewal_rate"]
-    (18.22, 91.08)
+    >>> r["first_hours"], r["first_rate"], r["renewal_rate"]
+    (59.0, 18.53, 91.08)
     >>> r["renewal_rate"] > r["first_rate"]
     True
-    >>> r2 = price(16, 150, 550, 312, 75, 70, 45, 10, 0, 5, 12)
+    >>> r2 = price(16, 150, 550, 312, 75, 70, 45, 10, 0, 4, 12)
     >>> r2["design_value"], r2["first_rate"]
-    (0.0, 23.22)
-    >>> price(2, 150, 112, 150, 25, 6, 45, 10, 30, 5, 12)["first_rate"] < 0
+    (0.0, 23.61)
+    >>> price(2, 150, 112, 150, 25, 6, 45, 10, 30, 4, 12)["first_rate"] < 0
     True
     """
     if spots <= 0:
